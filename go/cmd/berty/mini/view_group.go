@@ -7,14 +7,13 @@ import (
 	"strings"
 	"time"
 
+	"berty.tech/berty/v2/go/internal/banner"
+	"berty.tech/berty/v2/go/internal/orbitutil"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	"github.com/gdamore/tcell"
 	ipfs_coreapi "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/pkg/errors"
 	"github.com/rivo/tview"
-
-	"berty.tech/berty/go/internal/banner"
-	"berty.tech/berty/go/internal/orbitutil"
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 type groupView struct {

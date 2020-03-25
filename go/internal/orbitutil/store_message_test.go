@@ -6,11 +6,10 @@ import (
 	"testing"
 	"time"
 
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/internal/orbitutil"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	"github.com/stretchr/testify/assert"
-
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/internal/orbitutil"
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 func countEntries(out <-chan *bertyprotocol.GroupMessageEvent) int {

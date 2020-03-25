@@ -8,6 +8,11 @@ import (
 	"path"
 	"strings"
 
+	"berty.tech/berty/v2/go/internal/account"
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/internal/ipfsutil"
+	"berty.tech/berty/v2/go/internal/orbitutil"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	orbitdb "berty.tech/go-orbit-db"
 	"berty.tech/go-orbit-db/cache/cacheleveldown"
 	"github.com/ipfs/go-datastore"
@@ -15,12 +20,6 @@ import (
 	badger "github.com/ipfs/go-ds-badger"
 	"github.com/ipfs/go-ipfs/core"
 	"github.com/juju/fslock"
-
-	"berty.tech/berty/go/internal/account"
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/internal/ipfsutil"
-	"berty.tech/berty/go/internal/orbitutil"
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 func openGroupFromString(data string) (*bertyprotocol.Group, error) {

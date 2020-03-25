@@ -6,6 +6,11 @@ import (
 	"io"
 	"io/ioutil"
 
+	"berty.tech/berty/v2/go/internal/account"
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/internal/group"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"berty.tech/go-ipfs-log/identityprovider"
 	"berty.tech/go-orbit-db/address"
 	"berty.tech/go-orbit-db/iface"
@@ -14,12 +19,6 @@ import (
 	"github.com/golang/protobuf/proto"
 	coreapi "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/libp2p/go-libp2p-core/crypto"
-
-	"berty.tech/berty/go/internal/account"
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/internal/group"
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 const GroupMetadataStoreType = "berty_group_metadata"
@@ -373,7 +372,7 @@ func (m *MetadataStoreImpl) checkIfInGroup(pk []byte) bool {
 	return false
 }
 
-// EventTypeAccountGroupJoined indicates the payload includes that the account has joined a group
+// GroupJoin indicates the payload includes that the account has joined a group
 func (m *MetadataStoreImpl) GroupJoin(ctx context.Context, g *bertyprotocol.Group) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -392,7 +391,7 @@ func (m *MetadataStoreImpl) GroupJoin(ctx context.Context, g *bertyprotocol.Grou
 	}, bertyprotocol.EventTypeAccountGroupJoined)
 }
 
-// EventTypeAccountGroupLeft indicates the payload includes that the account has left a group
+// GroupLeave indicates the payload includes that the account has left a group
 func (m *MetadataStoreImpl) GroupLeave(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -414,7 +413,7 @@ func (m *MetadataStoreImpl) GroupLeave(ctx context.Context, pk crypto.PubKey) (o
 	return m.groupAction(ctx, pk, &bertyprotocol.AccountGroupLeft{}, bertyprotocol.EventTypeAccountGroupLeft)
 }
 
-// EventTypeAccountContactRequestDisabled indicates the payload includes that the account has disabled incoming contact requests
+// ContactRequestDisable indicates the payload includes that the account has disabled incoming contact requests
 func (m *MetadataStoreImpl) ContactRequestDisable(ctx context.Context) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -423,7 +422,7 @@ func (m *MetadataStoreImpl) ContactRequestDisable(ctx context.Context) (operatio
 	return m.attributeSignAndAddEvent(ctx, &bertyprotocol.AccountContactRequestDisabled{}, bertyprotocol.EventTypeAccountContactRequestDisabled)
 }
 
-// EventTypeAccountContactRequestEnabled indicates the payload includes that the account has enabled incoming contact requests
+// ContactRequestEnable indicates the payload includes that the account has enabled incoming contact requests
 func (m *MetadataStoreImpl) ContactRequestEnable(ctx context.Context) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -432,7 +431,7 @@ func (m *MetadataStoreImpl) ContactRequestEnable(ctx context.Context) (operation
 	return m.attributeSignAndAddEvent(ctx, &bertyprotocol.AccountContactRequestEnabled{}, bertyprotocol.EventTypeAccountContactRequestEnabled)
 }
 
-// EventTypeAccountContactRequestReferenceReset indicates the payload includes that the account has a new contact request reference
+// ContactRequestReferenceReset indicates the payload includes that the account has a new contact request reference
 func (m *MetadataStoreImpl) ContactRequestReferenceReset(ctx context.Context) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -448,7 +447,7 @@ func (m *MetadataStoreImpl) ContactRequestReferenceReset(ctx context.Context) (o
 	}, bertyprotocol.EventTypeAccountContactRequestReferenceReset)
 }
 
-// EventTypeAccountContactRequestEnqueued indicates the payload includes that the account will attempt to send a new contact request
+// ContactRequestOutgoingEnqueue indicates the payload includes that the account will attempt to send a new contact request
 func (m *MetadataStoreImpl) ContactRequestOutgoingEnqueue(ctx context.Context, contact *bertyprotocol.ShareableContact) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -483,7 +482,7 @@ func (m *MetadataStoreImpl) ContactRequestOutgoingEnqueue(ctx context.Context, c
 	}, bertyprotocol.EventTypeAccountContactRequestOutgoingEnqueued)
 }
 
-// EventTypeAccountContactRequestSent indicates the payload includes that the account has sent a contact request
+// ContactRequestOutgoingSent indicates the payload includes that the account has sent a contact request
 func (m *MetadataStoreImpl) ContactRequestOutgoingSent(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -496,7 +495,7 @@ func (m *MetadataStoreImpl) ContactRequestOutgoingSent(ctx context.Context, pk c
 	return m.contactAction(ctx, pk, &bertyprotocol.AccountContactRequestSent{}, bertyprotocol.EventTypeAccountContactRequestOutgoingSent)
 }
 
-// EventTypeAccountContactRequestReceived indicates the payload includes that the account has received a contact request
+// ContactRequestIncomingReceived indicates the payload includes that the account has received a contact request
 func (m *MetadataStoreImpl) ContactRequestIncomingReceived(ctx context.Context, contact *bertyprotocol.ShareableContact) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -536,7 +535,7 @@ func (m *MetadataStoreImpl) ContactRequestIncomingReceived(ctx context.Context, 
 	}, bertyprotocol.EventTypeAccountContactRequestIncomingReceived)
 }
 
-// EventTypeAccountContactRequestIncomingDiscarded indicates the payload includes that the account has ignored a contact request
+// ContactRequestIncomingDiscard indicates the payload includes that the account has ignored a contact request
 func (m *MetadataStoreImpl) ContactRequestIncomingDiscard(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -549,7 +548,7 @@ func (m *MetadataStoreImpl) ContactRequestIncomingDiscard(ctx context.Context, p
 	return m.contactAction(ctx, pk, &bertyprotocol.AccountContactRequestDiscarded{}, bertyprotocol.EventTypeAccountContactRequestIncomingDiscarded)
 }
 
-// EventTypeAccountContactRequestAccepted indicates the payload includes that the account has accepted a contact request
+// ContactRequestIncomingAccept indicates the payload includes that the account has accepted a contact request
 func (m *MetadataStoreImpl) ContactRequestIncomingAccept(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -562,7 +561,7 @@ func (m *MetadataStoreImpl) ContactRequestIncomingAccept(ctx context.Context, pk
 	return m.contactAction(ctx, pk, &bertyprotocol.AccountContactRequestAccepted{}, bertyprotocol.EventTypeAccountContactRequestIncomingAccepted)
 }
 
-// EventTypeAccountContactBlocked indicates the payload includes that the account has blocked a contact
+// ContactBlock indicates the payload includes that the account has blocked a contact
 func (m *MetadataStoreImpl) ContactBlock(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType
@@ -584,7 +583,7 @@ func (m *MetadataStoreImpl) ContactBlock(ctx context.Context, pk crypto.PubKey) 
 	return m.contactAction(ctx, pk, &bertyprotocol.AccountContactBlocked{}, bertyprotocol.EventTypeAccountContactBlocked)
 }
 
-// EventTypeAccountContactUnblocked indicates the payload includes that the account has unblocked a contact
+// ContactUnblock indicates the payload includes that the account has unblocked a contact
 func (m *MetadataStoreImpl) ContactUnblock(ctx context.Context, pk crypto.PubKey) (operation.Operation, error) {
 	if !m.typeChecker(isAccountGroup) {
 		return nil, errcode.ErrGroupInvalidType

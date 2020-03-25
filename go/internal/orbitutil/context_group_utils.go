@@ -3,14 +3,13 @@ package orbitutil
 import (
 	"context"
 
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/internal/group"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"berty.tech/go-orbit-db/events"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"go.uber.org/zap"
-
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/internal/group"
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 func MetadataStoreListSecrets(ctx context.Context, gc ContextGroup) (map[crypto.PubKey]*bertyprotocol.DeviceSecret, error) {

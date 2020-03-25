@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"berty.tech/berty/go/pkg/errcode"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	libp2p "github.com/libp2p/go-libp2p"
 	libp2p_host "github.com/libp2p/go-libp2p-core/host"
 	libp2p_peer "github.com/libp2p/go-libp2p-core/peer"

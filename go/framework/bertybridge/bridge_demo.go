@@ -3,20 +3,18 @@ package bertybridge
 import (
 	"context"
 
-	"berty.tech/berty/go/internal/ipfsutil"
-	"berty.tech/berty/go/pkg/bertydemo"
-	"go.uber.org/zap"
-
+	"berty.tech/berty/v2/go/internal/ipfsutil"
+	"berty.tech/berty/v2/go/pkg/bertydemo"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	grpc_ctxtags "github.com/grpc-ecosystem/go-grpc-middleware/tags"
+	ipfs_interface "github.com/ipfs/interface-go-ipfs-core"
+	_ "github.com/jinzhu/gorm/dialects/sqlite" // required by gorm
+	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-
-	ipfs_interface "github.com/ipfs/interface-go-ipfs-core"
-	_ "github.com/jinzhu/gorm/dialects/sqlite" // required by gorm
 )
 
 // type DemoBridge Bridge

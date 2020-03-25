@@ -1,8 +1,8 @@
 package protocoldb
 
 import (
-	"berty.tech/berty/go/internal/gormutil"
-	"berty.tech/berty/go/internal/protocoldb/migrations"
+	"berty.tech/berty/v2/go/internal/gormutil"
+	"berty.tech/berty/v2/go/internal/protocoldb/migrations"
 	"github.com/jinzhu/gorm"
 	"go.uber.org/zap"
 )

@@ -1,16 +1,13 @@
 package bertybridge
 
 import (
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
+	ipfs_interface "github.com/ipfs/interface-go-ipfs-core"
+	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite" // required by gorm
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
-
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
-
-	"github.com/jinzhu/gorm"
-
-	ipfs_interface "github.com/ipfs/interface-go-ipfs-core"
 )
 
 type Protocol struct {

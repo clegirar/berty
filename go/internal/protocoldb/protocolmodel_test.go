@@ -3,7 +3,7 @@ package protocoldb
 import (
 	"testing"
 
-	"berty.tech/berty/go/internal/testutil"
+	"berty.tech/berty/v2/go/internal/testutil"
 )
 
 func TestUsage(t *testing.T) {

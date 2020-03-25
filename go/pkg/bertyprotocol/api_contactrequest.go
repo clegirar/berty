@@ -3,7 +3,7 @@ package bertyprotocol
 import (
 	"context"
 
-	"berty.tech/berty/go/pkg/errcode"
+	"berty.tech/berty/v2/go/pkg/errcode"
 )
 
 // ContactRequestReference retrieves the necessary information to create a contact link

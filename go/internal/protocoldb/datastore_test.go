@@ -3,9 +3,9 @@ package protocoldb
 import (
 	"testing"
 
-	"berty.tech/berty/go/internal/gormutil"
-	"berty.tech/berty/go/internal/protocoldb/migrations"
-	"berty.tech/berty/go/internal/testutil"
+	"berty.tech/berty/v2/go/internal/gormutil"
+	"berty.tech/berty/v2/go/internal/protocoldb/migrations"
+	"berty.tech/berty/v2/go/internal/testutil"
 )
 
 func TestDropDatabase(t *testing.T) {

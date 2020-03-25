@@ -4,12 +4,11 @@ import (
 	"context"
 	"strings"
 
+	"berty.tech/berty/v2/go/internal/orbitutil"
 	"github.com/gdamore/tcell"
 	ipfslogger "github.com/ipfs/go-log"
 	"github.com/rivo/tview"
 	"github.com/whyrusleeping/go-logging"
-
-	"berty.tech/berty/go/internal/orbitutil"
 )
 
 type Opts struct {

@@ -1,12 +1,11 @@
 package group
 
 import (
+	"berty.tech/berty/v2/go/internal/cryptoutil"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"golang.org/x/crypto/nacl/box"
-
-	"berty.tech/berty/go/internal/cryptoutil"
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 func OpenDeviceSecret(m *bertyprotocol.GroupMetadata, localMemberPrivateKey crypto.PrivKey, group *bertyprotocol.Group) (crypto.PubKey, *bertyprotocol.DeviceSecret, error) {

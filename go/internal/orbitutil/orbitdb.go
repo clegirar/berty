@@ -5,6 +5,10 @@ import (
 	"fmt"
 	"sync"
 
+	"berty.tech/berty/v2/go/internal/account"
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"berty.tech/go-ipfs-log/identityprovider"
 	orbitdb "berty.tech/go-orbit-db"
 	"berty.tech/go-orbit-db/baseorbitdb"
@@ -12,11 +16,6 @@ import (
 	coreapi "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/pkg/errors"
-
-	"berty.tech/berty/go/internal/account"
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 type bertyOrbitDB struct {

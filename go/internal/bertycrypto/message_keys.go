@@ -10,16 +10,15 @@ import (
 	"io"
 	"io/ioutil"
 
+	"berty.tech/berty/v2/go/internal/account"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"github.com/golang/protobuf/proto"
-	"github.com/ipfs/go-cid"
-	"github.com/ipfs/go-datastore"
+	cid "github.com/ipfs/go-cid"
+	datastore "github.com/ipfs/go-datastore"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"golang.org/x/crypto/hkdf"
 	"golang.org/x/crypto/nacl/secretbox"
-
-	"berty.tech/berty/go/internal/account"
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 type MessageKeys interface {

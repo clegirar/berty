@@ -6,10 +6,9 @@ import (
 	"fmt"
 	"strings"
 
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/pkg/errors"
-
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 type command struct {

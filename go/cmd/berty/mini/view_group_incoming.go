@@ -6,11 +6,10 @@ import (
 	"fmt"
 	"time"
 
+	"berty.tech/berty/v2/go/internal/orbitutil"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/pkg/errors"
-
-	"berty.tech/berty/go/internal/orbitutil"
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 func handlerAccountGroupJoined(ctx context.Context, v *groupView, e *bertyprotocol.GroupMetadataEvent, isHistory bool) error {

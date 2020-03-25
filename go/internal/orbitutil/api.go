@@ -4,6 +4,8 @@ import (
 	"context"
 	"io"
 
+	"berty.tech/berty/v2/go/internal/bertycrypto"
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
 	"berty.tech/go-ipfs-log/identityprovider"
 	orbitdb "berty.tech/go-orbit-db"
 	"berty.tech/go-orbit-db/address"
@@ -11,9 +13,6 @@ import (
 	"berty.tech/go-orbit-db/stores/operation"
 	coreapi "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/libp2p/go-libp2p-core/crypto"
-
-	"berty.tech/berty/go/internal/bertycrypto"
-	"berty.tech/berty/go/pkg/bertyprotocol"
 )
 
 type ContextGroup interface {

@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"berty.tech/berty/go/internal/protocoldb/migrations/v0001init"
+	"berty.tech/berty/v2/go/internal/protocoldb/migrations/v0001init"
 	gormigrate "gopkg.in/gormigrate.v1"
 )
 

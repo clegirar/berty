@@ -5,10 +5,9 @@ import (
 	"math"
 	"math/big"
 
+	"berty.tech/berty/v2/go/pkg/bertyprotocol"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"github.com/libp2p/go-libp2p-core/crypto"
-
-	"berty.tech/berty/go/pkg/bertyprotocol"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 // OwnMemberDevice is own local device part of a group

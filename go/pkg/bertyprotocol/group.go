@@ -8,11 +8,10 @@ import (
 	"io"
 	"io/ioutil"
 
+	"berty.tech/berty/v2/go/internal/cryptoutil"
+	"berty.tech/berty/v2/go/pkg/errcode"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"golang.org/x/crypto/hkdf"
-
-	"berty.tech/berty/go/internal/cryptoutil"
-	"berty.tech/berty/go/pkg/errcode"
 )
 
 const CurrentGroupVersion = 1
@@ -71,7 +70,7 @@ func (m *Group) GetSharedSecret() (*[32]byte, error) {
 	return &sharedSecret, nil
 }
 
-// New creates a new Group object and an invitation to be used by
+// NewGroupMultiMember creates a new Group object and an invitation to be used by
 // the first member of the group
 func NewGroupMultiMember() (*Group, crypto.PrivKey, error) {
 	priv, pub, err := crypto.GenerateEd25519Key(rand.Reader)

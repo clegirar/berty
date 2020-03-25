@@ -1,1 +1,1 @@
-package bertybridge // import "berty.tech/berty/go/framework/bertybridge"
+package bertybridge // import "berty.tech/berty/v2/go/framework/bertybridge"
