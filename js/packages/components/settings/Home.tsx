@@ -64,7 +64,7 @@ const HomeHeaderAvatar: React.FC = () => {
 	const _styles = useStylesHome()
 	const [
 		{ row, margin, background, border, padding },
-		{ windowWidth, windowHeight, scaleHeight },
+		{ windowWidth, windowHeight, scaleHeight, scaleSize },
 	] = useStyles()
 	const account = useAccount()
 	const navigation = useNavigation()
@@ -77,7 +77,7 @@ const HomeHeaderAvatar: React.FC = () => {
 				onPress={() => navigation.navigate.settings.myBertyId()}
 			>
 				<View style={[{ alignItems: 'center' }]}>
-					<View style={{ position: 'absolute', top: -75 }}>
+					<View style={{ position: 'absolute', top: -80 * scaleSize }}>
 						<ProceduralCircleAvatar
 							seed={account?.publicKey}
 							size={70}
