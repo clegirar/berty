@@ -60,7 +60,9 @@ const PeerItem = ({ item, highlighted }) => {
 						  })
 						: null}
 				</View>
-				<Text style={[text.align.center, { flex: 4 }]}>{id.substr(0, 9)}</Text>
+				<Text numberOfLines={1} style={[text.align.center, { flex: 4 }]}>
+					{id.substr(0, 9)}
+				</Text>
 				<Text numberOfLines={1} style={[text.align.center, { flex: 3 }]}>
 					{minLatency ? minLatency + 'ms' : '?'}
 				</Text>
