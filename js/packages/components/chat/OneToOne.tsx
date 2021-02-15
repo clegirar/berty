@@ -333,7 +333,7 @@ const MessageList: React.FC<{
 	if (conv.replyOptions !== null) {
 		messages.push(conv.replyOptions)
 	}
-	const [{ overflow, row, flex, margin }, { scaleHeight }] = useStyles()
+	const [{ row, margin }, { scaleHeight }] = useStyles()
 	const flatListRef: any = useRef(null)
 
 	const onScrollToIndexFailed = () => {
@@ -393,9 +393,10 @@ const MessageList: React.FC<{
 		<SectionList
 			initialScrollIndex={initialScrollIndex}
 			onScrollToIndexFailed={onScrollToIndexFailed}
-			style={[overflow, row.item.fill, flex.tiny, { marginTop: 105 * scaleHeight }]}
+			style={[row.item.fill, { marginTop: 105 * scaleHeight }]}
 			ref={flatListRef}
 			keyboardDismissMode='on-drag'
+			keyboardShouldPersistTaps='never'
 			sections={sections}
 			inverted
 			keyExtractor={(item: any, index: number) => item?.cid || `${index}`}
